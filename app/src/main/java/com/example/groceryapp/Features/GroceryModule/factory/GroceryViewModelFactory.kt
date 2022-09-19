@@ -1,7 +1,9 @@
-package com.example.groceryapp.Database
+package com.example.groceryapp.Features.GroceryModule.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.groceryapp.Database.Repository.GroceryRepository
+import com.example.groceryapp.Features.GroceryModule.viewModel.GroceryViewModel
 
 class GroceryViewModelFactory(private val repository: GroceryRepository) : ViewModelProvider.NewInstanceFactory() {
 

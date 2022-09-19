@@ -1,4 +1,4 @@
-package com.example.groceryapp.Database
+package com.example.groceryapp.Features.GroceryModule.adapter
 
 import android.view.LayoutInflater
 import android.view.View

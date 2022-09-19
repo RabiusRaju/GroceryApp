@@ -1,19 +1,21 @@
-package com.example.groceryapp.UI
+package com.example.groceryapp.Features.GroceryModule.view
 
 import android.app.Dialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.groceryapp.Database.*
 import com.example.groceryapp.Database.Entitys.GroceryItems
+import com.example.groceryapp.Database.Repository.GroceryRepository
+import com.example.groceryapp.Features.GroceryModule.adapter.GroceryRVAdapter
+import com.example.groceryapp.Features.GroceryModule.viewModel.GroceryViewModel
+import com.example.groceryapp.Features.GroceryModule.factory.GroceryViewModelFactory
 import com.example.groceryapp.R
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import timber.log.Timber
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity(), GroceryRVAdapter.GroceryItemClickInter
             openDialog()
         }
 
-        Timber.e("MainActivity")
+        //Timber.e("MainActivity")
     }
 
     private fun openDialog() {
