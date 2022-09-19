@@ -1,4 +1,4 @@
-package com.example.groceryapp.Database
+package com.example.groceryapp.Database.Entitys
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

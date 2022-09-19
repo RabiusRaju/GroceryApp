@@ -4,6 +4,7 @@
     package="com.example.groceryapp">
 
     <application
+        android:name=".Utility.MyApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -14,7 +15,7 @@
         android:theme="@style/Theme.GrocerryApp"
         tools:targetApi="31">
         <activity
-            android:name="com.example.groceryapp.MainActivity"
+            android:name="com.example.groceryapp.UI.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
