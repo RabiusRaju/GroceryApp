@@ -8,6 +8,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity(), GroceryRVAdapter.GroceryItemClickInter
     lateinit var groceryViewModel: GroceryViewModel
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -42,7 +44,7 @@ class MainActivity : AppCompatActivity(), GroceryRVAdapter.GroceryItemClickInter
 
         val groceryRepository = GroceryRepository(GroceryDatabase(this))
         val factory = GroceryViewModelFactory(groceryRepository)
-        groceryViewModel = ViewModelProvider(this, factory).get(GroceryViewModel::class.java)
+        groceryViewModel = ViewModelProvider(this, factory)[GroceryViewModel::class.java]
         groceryViewModel.getAllGroceryItems().observe(this, Observer {
             groceryRVAdapter.list = it
             groceryRVAdapter.notifyDataSetChanged()

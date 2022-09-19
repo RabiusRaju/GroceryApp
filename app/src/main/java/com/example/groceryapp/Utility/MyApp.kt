@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.multidex.MultiDexApplication
 import com.example.groceryapp.BuildConfig
+import org.koin.core.context.startKoin
 import timber.log.Timber
 
 /**
@@ -14,6 +15,15 @@ class MyApp : MultiDexApplication() {
         super.onCreate()
         context = this
         initializeLoggers()
+        startKoin {
+
+        }
+        // Start Koin
+        /*startKoin{
+            androidLogger()
+            androidContext(this@MyApplication)
+            modules(appModule)
+        }*/
     }
 
     companion object{
@@ -23,6 +33,7 @@ class MyApp : MultiDexApplication() {
 
     private fun initializeLoggers() {
         if (BuildConfig.DEBUG){
+
             Timber.plant(CustomDebugTree())
         }
     }
