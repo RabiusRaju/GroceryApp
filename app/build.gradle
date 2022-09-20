@@ -67,7 +67,7 @@ dependencies {
     implementation 'com.jakewharton.timber:timber:5.0.1'
 
     //Log
-    //implementation 'com.github.Chesire:LifecykleLog:3.1.0'
+    implementation 'com.github.Chesire:LifecykleLog:3.1.0'
 
     implementation 'com.mikhaellopez:circularprogressbar:3.1.0'
 
