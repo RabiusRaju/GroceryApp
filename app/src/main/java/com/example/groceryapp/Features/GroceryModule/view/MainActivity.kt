@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity(), GroceryRVAdapter.GroceryItemClickInter
 
     lateinit var itemsRV: RecyclerView
     lateinit var addFAB: FloatingActionButton
-    lateinit var list: List<GroceryItems>
+    var list: List<GroceryItems> = ArrayList()
     lateinit var groceryRVAdapter: GroceryRVAdapter
     lateinit var groceryViewModel: GroceryViewModel
 
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), GroceryRVAdapter.GroceryItemClickInter
         itemsRV = findViewById(R.id.idRVItems)
         addFAB = findViewById(R.id.idFABAdd)
 
-        list = ArrayList<GroceryItems>()
+
         groceryRVAdapter = GroceryRVAdapter(list, this);
         itemsRV.layoutManager = LinearLayoutManager(this)
         itemsRV.adapter = groceryRVAdapter

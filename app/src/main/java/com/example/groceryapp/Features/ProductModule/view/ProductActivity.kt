@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.groceryapp.Database.Entitys.GroceryItems
+
 import com.example.groceryapp.Database.Entitys.Products
 import com.example.groceryapp.Database.GroceryDatabase
 import com.example.groceryapp.Database.Repository.ProductRepository
@@ -18,12 +18,16 @@ import com.example.groceryapp.Features.ProductModule.adapter.ProductRVAdapter
 import com.example.groceryapp.Features.ProductModule.factory.ProductViewModelFactory
 import com.example.groceryapp.Features.ProductModule.viewModel.ProductViewModel
 import com.example.groceryapp.R
+import com.example.groceryapp.databinding.ActivityProductBinding
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.wada811.viewbinding.viewBinding
 
 class ProductActivity : AppCompatActivity(), ProductRVAdapter.ProductItemClickInterface {
 
-    lateinit var itemsRV : RecyclerView
-    lateinit var addFAB : FloatingActionButton
+
+    private val binding by viewBinding(ActivityProductBinding::bind)
+
     lateinit var list: List<Products>
     lateinit var productRVAdapter: ProductRVAdapter
     lateinit var productViewModel: ProductViewModel
@@ -33,13 +37,10 @@ class ProductActivity : AppCompatActivity(), ProductRVAdapter.ProductItemClickIn
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product)
 
-        itemsRV = findViewById(R.id.idRVItems)
-        addFAB = findViewById(R.id.idFABAdd)
-
         list = ArrayList<Products>()
         productRVAdapter = ProductRVAdapter(list,this)
-        itemsRV.layoutManager = LinearLayoutManager(this)
-        itemsRV.adapter = productRVAdapter
+        binding.idRVItems.layoutManager = LinearLayoutManager(this)
+        binding.idRVItems.adapter = productRVAdapter
 
         val productRepository = ProductRepository(GroceryDatabase(this))
         val factory = ProductViewModelFactory(productRepository)
@@ -50,7 +51,7 @@ class ProductActivity : AppCompatActivity(), ProductRVAdapter.ProductItemClickIn
         })
 
 
-        addFAB.setOnClickListener {
+        binding.idFABAdd.setOnClickListener {
             openDialog()
         }
 
