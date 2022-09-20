@@ -78,7 +78,7 @@ class ProductActivity : AppCompatActivity(), ProductRVAdapter.ProductItemClickIn
             val itemQuantity: Int = itemQuantityEdt.text.toString().toInt()
 
             if (itemName.isNotEmpty() && itemPrice > 0 && itemQuantity > 0) {
-                val item = Products(itemName, itemQuantity, itemPrice)
+                val item = Products(itemName, itemQuantity, itemPrice,0)
                 productViewModel.insert(item)
                 Toast.makeText(applicationContext, "Item Inserted..", Toast.LENGTH_SHORT).show()
                 productRVAdapter.notifyDataSetChanged()

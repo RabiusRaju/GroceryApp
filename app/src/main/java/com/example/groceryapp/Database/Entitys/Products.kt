@@ -13,7 +13,10 @@ data class Products(
     var quantity:Int,
 
     @ColumnInfo(name = "price")
-    var price:Int
+    var price:Int,
+
+    @ColumnInfo(name = "unity")
+    var unity:Int
 
 ){
 
