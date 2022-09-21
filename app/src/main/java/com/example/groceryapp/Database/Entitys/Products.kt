@@ -18,6 +18,8 @@ data class Products(
     @ColumnInfo(name = "unity")
     var unity:Int
 
+
+
 ){
 
     @PrimaryKey(autoGenerate = true)

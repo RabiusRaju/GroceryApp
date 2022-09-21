@@ -3,6 +3,7 @@ package com.example.groceryapp.Utility
 import android.content.Context
 import android.util.Log
 import androidx.multidex.MultiDexApplication
+import com.chesire.lifecyklelog.LifecykleLog
 import com.example.groceryapp.BuildConfig
 import org.koin.core.context.startKoin
 import timber.log.Timber
@@ -15,6 +16,7 @@ class MyApp : MultiDexApplication() {
         super.onCreate()
         context = this
         initializeLoggers()
+        LifecykleLog.initialize(this)
         startKoin {
 
         }

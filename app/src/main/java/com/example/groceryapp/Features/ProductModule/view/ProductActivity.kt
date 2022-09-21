@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.chesire.lifecyklelog.LogLifecykle
 
 import com.example.groceryapp.Database.Entitys.Products
 import com.example.groceryapp.Database.GroceryDatabase
@@ -22,6 +23,7 @@ import com.example.groceryapp.databinding.ActivityProductBinding
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.wada811.viewbinding.viewBinding
+
 
 class ProductActivity : AppCompatActivity(), ProductRVAdapter.ProductItemClickInterface {
 

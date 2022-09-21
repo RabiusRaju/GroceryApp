@@ -8,6 +8,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.groceryapp.Database.Entitys.Products
 import com.example.groceryapp.R
+import com.example.groceryapp.databinding.GroceryAddDialogBinding
+import com.example.groceryapp.databinding.GroceryRvItemBinding
 
 class ProductRVAdapter (
     var list: List<Products>,
@@ -15,21 +17,24 @@ class ProductRVAdapter (
 
 ): RecyclerView.Adapter<ProductRVAdapter.ProductViewHolder>() {
 
+    private lateinit var binding : GroceryRvItemBinding
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): ProductRVAdapter.ProductViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.grocery_rv_item,parent,false)
-        return  ProductViewHolder(view)
+        binding =  GroceryRvItemBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+
+        return  ProductViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: ProductRVAdapter.ProductViewHolder, position: Int) {
-        holder.nameTV.text = list[position].productName
-        holder.quantityTV.text = list[position].quantity.toString()
-        holder.deleteTV.setOnClickListener {
+        holder.binding.idTvItemName.text = list[position].productName
+        holder.binding.idTvQuantity.text = list[position].quantity.toString()
+        holder.binding.idIvDelete.setOnClickListener{
             productItemClickInterface.onItemClick(list[position])
         }
+
     }
 
     override fun getItemCount(): Int {
@@ -37,13 +42,7 @@ class ProductRVAdapter (
     }
 
 
-    inner class ProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val nameTV = itemView.findViewById<TextView>(R.id.idTvItemName)
-        val quantityTV = itemView.findViewById<TextView>(R.id.idTvQuantity)
-        val rateTV = itemView.findViewById<TextView>(R.id.idTvRate)
-        val amountTV = itemView.findViewById<TextView>(R.id.idTVTotalAmount)
-        val deleteTV = itemView.findViewById<ImageView>(R.id.idIvDelete)
-    }
+    inner class ProductViewHolder(var binding: GroceryRvItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     interface ProductItemClickInterface {
         fun onItemClick(products: Products)
