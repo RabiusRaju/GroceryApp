@@ -1,6 +1,7 @@
 package com.example.groceryapp.utility
 
 import android.content.Context
+import android.util.Log
 import androidx.multidex.MultiDexApplication
 import com.chesire.lifecyklelog.LifecykleLog
 import com.example.groceryapp.BuildConfig
@@ -17,7 +18,7 @@ class MyApp : MultiDexApplication() {
         initializeLoggers()
         LifecykleLog.initialize(this)
         startKoin {
-
+            Log.d("main", "onCreate: Koin Start")
         }
         // Start Koin
         /*startKoin{
