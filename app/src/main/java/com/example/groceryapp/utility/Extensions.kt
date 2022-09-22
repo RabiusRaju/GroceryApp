@@ -1,11 +1,15 @@
 package com.example.groceryapp.utility
 
 import android.content.Context
+import android.graphics.Typeface
+import android.location.LocationManager
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import androidx.annotation.RequiresApi
-import com.example.groceryapp.MyApp.Companion.context
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.StyleSpan
+import android.view.View
 
 /**
  * Created by MD.Rabius sani raju on 9/22/22.
@@ -27,4 +31,47 @@ fun  isOnline(context: Context?): Boolean {
         }
     }
     return connected
+}
+
+/*
+* User Define String Text Style defined
+* */
+fun getSpanString(normal: String, bold: String): Spannable? {
+    val finalString = normal + bold
+    val sb: Spannable = SpannableString(normal + bold)
+    sb.setSpan(
+        StyleSpan(Typeface.BOLD),
+        normal.length,
+        finalString.length,
+        Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+    )
+    return sb
+}
+/*
+* Hardware related  extension
+* */
+fun isLocationEnabled(context: Context): Boolean {
+    val lm = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
+    var gpsEnabled = false
+    try {
+        gpsEnabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER)
+    } catch (ex: Exception) {
+    }
+    return gpsEnabled
+}
+
+/*
+* Activity & Fragment related view Control extension
+* */
+
+fun View.show() {
+    this.visibility = View.VISIBLE
+}
+
+fun View.gone() {
+    this.visibility = View.GONE
+}
+
+fun View.invisible() {
+    this.visibility = View.INVISIBLE
 }
