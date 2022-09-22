@@ -1,10 +1,10 @@
-package com.example.groceryapp.utility
+package com.example.groceryapp
 
 import android.content.Context
 import android.util.Log
 import androidx.multidex.MultiDexApplication
 import com.chesire.lifecyklelog.LifecykleLog
-import com.example.groceryapp.BuildConfig
+import com.example.groceryapp.utility.CustomDebugTree
 import org.koin.core.context.startKoin
 import timber.log.Timber
 

@@ -18,8 +18,10 @@ import com.example.groceryapp.features.productModule.factory.ProductViewModelFac
 import com.example.groceryapp.features.productModule.viewModel.ProductViewModel
 import com.example.groceryapp.R
 import com.example.groceryapp.databinding.ActivityProductBinding
+import com.example.groceryapp.utility.isOnline
 
 import com.wada811.viewbinding.viewBinding
+import timber.log.Timber
 
 
 class ProductActivity : AppCompatActivity(), ProductRVAdapter.ProductItemClickInterface {
