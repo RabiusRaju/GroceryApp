@@ -27,23 +27,27 @@ class ProductActivity : AppCompatActivity(), ProductRVAdapter.ProductItemClickIn
 
     private val binding by viewBinding(ActivityProductBinding::bind)
 
-    lateinit var list: List<Products>
-    lateinit var productRVAdapter: ProductRVAdapter
-    lateinit var productViewModel: ProductViewModel
+    private val list : List<Products> by lazy { ArrayList() }
+    private val productRVAdapter by lazy { ProductRVAdapter(list,this) }
+    private val productRepository by lazy { ProductRepository(GroceryDatabase(this)) }
+    private val productViewModelFactory by lazy {ProductViewModelFactory(productRepository)}
+    private val productViewModel by lazy { ViewModelProvider(this,productViewModelFactory)[ProductViewModel::class.java] }
+
+    //lateinit var productViewModel: ProductViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product)
 
-        list = ArrayList<Products>()
-        productRVAdapter = ProductRVAdapter(list,this)
+        //productRVAdapter = ProductRVAdapter(list,this)
         binding.idRVItems.layoutManager = LinearLayoutManager(this)
         binding.idRVItems.adapter = productRVAdapter
 
-        val productRepository = ProductRepository(GroceryDatabase(this))
-        val factory = ProductViewModelFactory(productRepository)
-        productViewModel = ViewModelProvider(this,factory)[ProductViewModel::class.java]
+        //val productRepository = ProductRepository(GroceryDatabase(this))
+        //val factory = ProductViewModelFactory(productRepository)
+
+        //productViewModel = ViewModelProvider(this,productViewModelFactory)[ProductViewModel::class.java]
         productViewModel.getAllProductItems().observe(this, Observer {
             productRVAdapter.list = it
             productRVAdapter.notifyDataSetChanged()

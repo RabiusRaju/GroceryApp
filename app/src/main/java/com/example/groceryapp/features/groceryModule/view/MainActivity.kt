@@ -22,10 +22,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 class MainActivity : AppCompatActivity(), GroceryRVAdapter.GroceryItemClickInterface {
 
 
+    private val list: List<GroceryItems> by lazy { ArrayList() }
+    private val groceryRVAdapter by lazy { GroceryRVAdapter(list,this) }
+    private val groceryRepository by lazy { GroceryRepository(GroceryDatabase(this)) }
+    private val groceryViewModelFactory by lazy { GroceryViewModelFactory(groceryRepository) }
+
     lateinit var itemsRV: RecyclerView
     lateinit var addFAB: FloatingActionButton
-    var list: List<GroceryItems> = ArrayList()
-    lateinit var groceryRVAdapter: GroceryRVAdapter
+
+    //lateinit var groceryRVAdapter: GroceryRVAdapter
     lateinit var groceryViewModel: GroceryViewModel
 
 
@@ -38,14 +43,15 @@ class MainActivity : AppCompatActivity(), GroceryRVAdapter.GroceryItemClickInter
         addFAB = findViewById(R.id.idFABAdd)
 
 
-        groceryRVAdapter = GroceryRVAdapter(list, this);
+        //groceryRVAdapter = GroceryRVAdapter(list, this);
         itemsRV.layoutManager = LinearLayoutManager(this)
         itemsRV.adapter = groceryRVAdapter
 
 
-        val groceryRepository = GroceryRepository(GroceryDatabase(this))
-        val factory = GroceryViewModelFactory(groceryRepository)
-        groceryViewModel = ViewModelProvider(this, factory)[GroceryViewModel::class.java]
+        //val groceryRepository = GroceryRepository(GroceryDatabase(this))
+        //val factory = GroceryViewModelFactory(groceryRepository)
+
+        groceryViewModel = ViewModelProvider(this, groceryViewModelFactory)[GroceryViewModel::class.java]
         groceryViewModel.getAllGroceryItems().observe(this, Observer {
             groceryRVAdapter.list = it
             groceryRVAdapter.notifyDataSetChanged()
